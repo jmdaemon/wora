@@ -1,0 +1,35 @@
+from setuptools import find_packages, setup
+
+with open('README.md', 'r', encoding='utf-8') as fh:
+    long_description = fh.read()
+
+setup(
+    name='wora-jmd',
+    version='0.1.0',
+    license='GPLv3',
+    author='Joseph Diza',
+    author_email='josephm.diza@gmail.com',
+    description='Write once, run anywhere, a python library with general purpose utilities.',
+    long_description=long_description,
+    long_description_content_type='text/markdown',
+    url='https://github.com/jmdaemon/wora',
+    project_urls={ 'Bug Tracker': 'https://github.com/jmdaemon/wora/issues', },
+    classifiers=[
+        'Programming Language :: Python :: 3',
+        'License :: OSI Approved :: GPLv3 License',
+        'Operating System :: OS Independent',
+    ],
+    package_dir={'': 'src'},
+    packages=find_packages(where='src'),
+    python_requires='>=3.6',
+    py_modules=['wora.file', 'wora.dynmod'],
+    install_requires=[],
+    include_package_data=True,
+    zip_safe=False,
+    entry_points={
+        'console_scripts': [
+            'wora = wora.cli:main',
+        ],
+    },
+    test_suite='tests',
+)
