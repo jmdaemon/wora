@@ -4,7 +4,7 @@ with open('README.md', 'r', encoding='utf-8') as fh:
     long_description = fh.read()
 
 setup(
-    name='wora-jmd',
+    name='wora',
     version='0.1.0',
     license='GPLv3',
     author='Joseph Diza',
@@ -26,10 +26,5 @@ setup(
     install_requires=[],
     include_package_data=True,
     zip_safe=False,
-    entry_points={
-        'console_scripts': [
-            'wora = wora.cli:main',
-        ],
-    },
     test_suite='tests',
 )
