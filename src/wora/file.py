@@ -1,4 +1,5 @@
-import os
+import pathlib
+
 def read_file(fname: str) -> str:
     file = open(fname, 'r')
     res = file.read()
@@ -10,7 +11,8 @@ def write_file(fname: str, content: str) -> str:
     file.write(content)
     file.close()
 
-def mkdir(path, makedir=True):
-    if makedir:
-        os.mkdir(path)
-    return str(path.stem)
+def mkdir(file):
+    if isinstance(file, str):
+        pathlib.Path(file).mkdir(parents=True, exist_ok=True)
+    elif isinstance(file, pathlib.Path):
+        file.mkdir(parents=True, exist_ok=True)
