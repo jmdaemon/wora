@@ -5,7 +5,7 @@ with open('README.md', 'r', encoding='utf-8') as fh:
 
 setup(
     name='wora',
-    version='0.1.4',
+    version='0.1.5',
     license='GPLv3',
     author='Joseph Diza',
     author_email='josephm.diza@gmail.com',
