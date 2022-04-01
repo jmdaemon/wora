@@ -5,7 +5,7 @@ with open('README.md', 'r', encoding='utf-8') as fh:
 
 setup(
     name='wora',
-    version='0.1.5',
+    version='0.1.6',
     license='GPLv3',
     author='Joseph Diza',
     author_email='josephm.diza@gmail.com',
@@ -23,7 +23,7 @@ setup(
     packages=find_packages(where='src'),
     python_requires='>=3.6',
     py_modules=['wora.file', 'wora.dynmod'],
-    install_requires=[],
+    install_requires=['toml'],
     include_package_data=True,
     zip_safe=False,
     test_suite='tests',
