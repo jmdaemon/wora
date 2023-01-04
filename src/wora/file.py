@@ -1,6 +1,8 @@
 import pathlib
 import os
 
+from wora.syntax import tern_func
+
 def to_path(fp: str) -> pathlib.Path:
     ''' Convert str to Path '''
     if isinstance(fp, pathlib.Path):
@@ -23,10 +25,7 @@ def write_file(fname: str, content: str):
 
 def mkpath(p: str | pathlib.Path):
     ''' Convert strings to paths '''
-    if isinstance(p, pathlib.Path):
-        return p
-    else:
-        return pathlib.Path(p)
+    return tern_func(isinstance(p, pathlib.Path), lambda p: p, lambda p: pathlib.Path(p), p)
 
 def mkdir(file):
     ''' Make a directory from a str or Path '''
