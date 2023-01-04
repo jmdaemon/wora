@@ -1,5 +1,4 @@
 import pathlib
-import toml
 import os
 
 def to_path(fp: str) -> pathlib.Path:
@@ -22,12 +21,23 @@ def write_file(fname: str, content: str):
     file.write(content)
     file.close()
 
+def mkpath(p: str | pathlib.Path):
+    ''' Convert strings to paths '''
+    if isinstance(p, pathlib.Path):
+        return p
+    else:
+        return pathlib.Path(p)
+
 def mkdir(file):
     ''' Make a directory from a str or Path '''
     if isinstance(file, str):
         pathlib.Path(file).mkdir(parents=True, exist_ok=True)
     elif isinstance(file, pathlib.Path):
         file.mkdir(parents=True, exist_ok=True)
+
+def exists(path):
+    ''' Determine if a file/folder/symlink exists '''
+    return to_path(path).exists()
 
 def get_cwd_of(file: str) -> str:
     ''' Retrieve the current working directory of a given file '''
@@ -39,9 +49,5 @@ def make_folder(file: str):
         mkdir(get_cwd_of(file))
     pass
 
-def load_toml_config(configfp: str) -> dict:
-    ''' Reads the toml config file into a dictionary '''
-    result = dict
-    if (to_path(configfp).exists()):
-        result = toml.loads(read_file(configfp))
-    return result
+def expand(path):
+    return mkpath(path).expanduser()
